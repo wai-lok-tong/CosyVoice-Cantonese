@@ -48,7 +48,8 @@ compile_commands.json
 *.pt
 pretrained_models/*
 .venv/
-outputs/
+outputs/*
+!outputs/.gitkeep
 *_pb2_grpc.py
 *_pb2.py
 *.tar
