@@ -19,8 +19,8 @@ CosyVoice-Cantonese/
 │   │   └── download_model.py       Download Fun-CosyVoice3 weights
 │   ├── docs/
 │   │   ├── STRUCTURE.md            This file
-│   │   └── TROUBLESHOOTING.md      Common errors and fixes
-│   ├── README-CANTONESE.md         Main usage guide for this fork
+│   │   ├── TROUBLESHOOTING.md      Common errors and fixes
+│   │   └── UPSTREAM-README.md      Original CosyVoice README (archived)
 │   └── outputs/                    Generated WAV files (git-ignored)
 │
 ├──── Runtime data (local only, git-ignored) ───────────────
@@ -89,7 +89,8 @@ outputs/YYYYMMDD_HHMMSS_*.wav
 | `setup_cantonese_ui.ps1` | Same via conda |
 | `scripts/download_model.py` | Model download helper |
 | `cosyvoice/utils/file_utils.py` | Patched `load_wav()` for Windows / torchaudio 2.11 |
-| `README-CANTONESE.md` | Usage documentation |
+| `README.md` | Main Cantonese TTS usage guide (repo landing page) |
+| `docs/UPSTREAM-README.md` | Archived upstream CosyVoice README |
 | `docs/` | Structure and troubleshooting |
 
 ---
