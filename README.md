@@ -4,7 +4,8 @@ A **Cantonese text-to-speech web UI** built on [Fun-CosyVoice 3.0](https://githu
 
 Enter Cantonese text, choose a voice (female, male, emotional styles, or custom clone), and generate natural speech. Results play in the browser and save automatically to `outputs/`.
 
-**Author:** [wai-lok-tong](https://github.com/wai-lok-tong)  
+**Author:** [wai-lok-tong](https://github.com/wai-lok-tong)
+
 **Based on:** [FunAudioLLM/CosyVoice](https://github.com/FunAudioLLM/CosyVoice) · [Upstream README](docs/UPSTREAM-README.md)
 
 ---
