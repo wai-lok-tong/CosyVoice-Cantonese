@@ -128,7 +128,7 @@ class TritonPythonModel:
         """Execute inference on the batched requests."""
         responses = []
         # Process each request in batch
-        for req_idx, request in enumerate(requests):
+        for request in requests:
             # Extract input tensors
             wav_array = pb_utils.get_input_tensor_by_name(
                 request, "reference_wav").as_numpy()

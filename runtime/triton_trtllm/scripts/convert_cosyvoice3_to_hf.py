@@ -317,7 +317,15 @@ def convert_cosyvoice3_to_hf(
 
     qwen_model.save_pretrained(output_dir)
 
-    TEMPLATE = "{%- for message in messages %}{%- if message['role'] == 'user' %}{{- '<|sos|>' + message['content'] + '<|task_id|>' }}{%- elif message['role'] == 'assistant' %}{{- message['content']}}{%- endif %}{%- endfor %}"
+    TEMPLATE = (
+        "{%- for message in messages %}"
+        "{%- if message['role'] == 'user' %}"
+        "{{- '<|sos|>' + message['content'] + '<|task_id|>' }}"
+        "{%- elif message['role'] == 'assistant' %}"
+        "{{- message['content']}}"
+        "{%- endif %}"
+        "{%- endfor %}"
+    )
     tokenizer.chat_template = TEMPLATE
     tokenizer.save_pretrained(output_dir)
 
@@ -362,11 +370,12 @@ def main():
     print(f"\nHuggingFace model saved to: {output_dir}")
     print("\nNext steps:")
     print("1. Convert to TRT-LLM weights:")
-    print(f"   python -c \"from tensorrt_llm.models import QWenForCausalLM; ...")
+    print("   python -c \"from tensorrt_llm.models import QWenForCausalLM; ...")
     print("\n2. Build TRT-LLM engines:")
-    print(f"   trtllm-build --checkpoint_dir <trt_weights_dir> --output_dir <trt_engines_dir> ...")
+    print("   trtllm-build --checkpoint_dir <trt_weights_dir> --output_dir <trt_engines_dir> ...")
     print("=" * 70)
 
 
 if __name__ == "__main__":
     main()
+

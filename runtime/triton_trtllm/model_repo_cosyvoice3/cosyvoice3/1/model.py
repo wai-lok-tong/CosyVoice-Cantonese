@@ -18,8 +18,8 @@ torch.set_num_threads(1)
 
 # CosyVoice3 mel params: fmax=None (Nyquist), center=False
 mel_spectrogram = partial(matcha_mel_spectrogram,
-    n_fft=1920, num_mels=80, sampling_rate=24000,
-    hop_size=480, win_size=1920, fmin=0, fmax=None, center=False)
+                          n_fft=1920, num_mels=80, sampling_rate=24000,
+                          hop_size=480, win_size=1920, fmin=0, fmax=None, center=False)
 
 
 def parse_speech_token_string(response_text):
@@ -132,7 +132,7 @@ class TritonPythonModel:
             if not match:
                 break
             token_num = int(match.group(1))
-            #final_id = token_num + ORIGINAL_VOCAB_SIZE
+            # final_id = token_num + ORIGINAL_VOCAB_SIZE
             yield token_num
             buffer = buffer[match.end():]
 
@@ -235,7 +235,7 @@ class TritonPythonModel:
             mel = mel.unsqueeze(0)  # [80, T] -> [1, 80, T]
         mel_pb = pb_utils.Tensor.from_dlpack("mel", to_dlpack(mel.float()))
         finalize_pb = pb_utils.Tensor("finalize",
-                      np.array([[finalize]], dtype=np.bool_))
+                                      np.array([[finalize]], dtype=np.bool_))
 
         inference_request = pb_utils.InferenceRequest(
             model_name='vocoder',
