@@ -294,8 +294,10 @@ if __name__ == "__main__":
     parser.add_argument("--share", action="store_true", help="Create public Gradio link")
     args = parser.parse_args()
 
-    print(f"Loading model from: {args.model_dir}")
+    print(f"Loading model from: {args.model_dir}", flush=True)
+    print("This can take 1-2 minutes. Wait for 'Running on local URL' before opening the browser.", flush=True)
     cosyvoice = AutoModel(model_dir=args.model_dir)
+    print("Model loaded. Starting web server...", flush=True)
 
     if not hasattr(cosyvoice, "inference_instruct2"):
         raise RuntimeError(

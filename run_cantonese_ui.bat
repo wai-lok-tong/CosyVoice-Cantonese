@@ -35,16 +35,21 @@ echo.
 echo Starting Cantonese TTS UI at http://localhost:7860
 echo Keep this window open while using the UI.
 echo.
+echo Loading the model can take 1-2 minutes. The window may look idle.
+echo Do NOT open the browser until you see: Running on local URL
+echo.
 
 REM Ensure torch CUDA DLLs resolve (fixes WinError 1114 on c10.dll)
 if exist ".venv\Lib\site-packages\torch\lib" (
     set "PATH=%CD%\.venv\Lib\site-packages\torch\lib;%PATH%"
 )
 
+set PYTHONUNBUFFERED=1
+
 if defined USE_CONDA (
-    call conda run -n cosyvoice python cantonese_webui.py --port 7860
+    call conda run -n cosyvoice python -u cantonese_webui.py --port 7860
 ) else (
-    "%PYTHON%" cantonese_webui.py --port 7860
+    "%PYTHON%" -u cantonese_webui.py --port 7860
 )
 
 pause
